@@ -1,14 +1,20 @@
-import moment from "moment";
 import React from "react";
-import { FlatList, TouchableOpacity } from "react-native";
-import { View, Text } from "react-native";
+import { FlatList } from "react-native";
+import moment from "moment";
 import CalendarStripProps from "react-native-calendar-strip";
-import Item from "../../components/Item";
-import ItemList from "../../components/Item";
+import { useNavigation } from "@react-navigation/native";
 
+import Item from "../../components/Item";
 import * as S from "./styles";
 
+interface ScreenNavigationProp {
+  navigate: (screen: string, params?: unknown) => void;
+}
+
+
 const Home: React.FC = () => {
+  const {navigate} = useNavigation<ScreenNavigationProp>();
+
   const data = [
     {
       id: "kskfkdaa",
@@ -41,6 +47,10 @@ const Home: React.FC = () => {
       date: moment(),
     },
   ];
+
+  const handleOneNewItem = ():void => {
+    navigate("NewItem");
+  }
 
   return (
     <S.Container>
@@ -82,7 +92,7 @@ const Home: React.FC = () => {
           renderItem={({ item }) => <Item item={item} />}
         />
 
-        <S.AddButton>
+        <S.AddButton onPress={handleOneNewItem} >
           <S.AddIcon name="ios-add-circle" />
         </S.AddButton>
       </S.BodyContainer>
