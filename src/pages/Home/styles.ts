@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { Ionicons } from "@expo/vector-icons";
 
 export const Container = styled.View`
   flex: 1;
@@ -48,4 +49,15 @@ export const BodyContainer = styled.View`
   border-top-right-radius: 20px;
 
   padding: 10px 20px;
+`;
+
+export const AddButton = styled.TouchableOpacity`
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+`;
+
+export const AddIcon = styled(Ionicons)`
+  font-size: 54px;
+  color: #1e3ba1;
 `;

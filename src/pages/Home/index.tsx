@@ -1,16 +1,52 @@
 import moment from "moment";
 import React from "react";
+import { FlatList, TouchableOpacity } from "react-native";
 import { View, Text } from "react-native";
 import CalendarStripProps from "react-native-calendar-strip";
+import Item from "../../components/Item";
+import ItemList from "../../components/Item";
 
-import * as S from './styles';
+import * as S from "./styles";
 
 const Home: React.FC = () => {
+  const data = [
+    {
+      id: "kskfkdaa",
+      name: "Pão",
+      kcal: 400,
+      date: moment(),
+    },
+    {
+      id: "kskfkdswaa",
+      name: "Arroz",
+      kcal: 300,
+      date: moment(),
+    },
+    {
+      id: "kskfkdwaaa",
+      name: "Macarrão",
+      kcal: 400,
+      date: moment(),
+    },
+    {
+      id: "kskfkd22waa",
+      name: "Feijão",
+      kcal: 330,
+      date: moment(),
+    },
+    {
+      id: "kskfkdwaa33",
+      name: "Carne",
+      kcal: 500,
+      date: moment(),
+    },
+  ];
+
   return (
     <S.Container>
       <S.Header>
-        <CalendarStripProps 
-         daySelectionAnimation={{
+        <CalendarStripProps
+          daySelectionAnimation={{
             type: "border",
             duration: 200,
             borderWidth: 1,
@@ -32,11 +68,24 @@ const Home: React.FC = () => {
           scrollerPaging={true}
           iconLeft={require("../../assets/arrow-left.png")}
           iconRight={require("../../assets/arrow-right.png")}
-         />
+        />
+        <S.HeaderTitle>Consumido no dia</S.HeaderTitle>
+        <S.ContainerHighLight>
+          <S.TextCounterHighLight>2530</S.TextCounterHighLight>
+          <S.HeaderTextHighLight>/kcal</S.HeaderTextHighLight>
+        </S.ContainerHighLight>
       </S.Header>
-        <S.BodyContainer>
+      <S.BodyContainer>
+        <FlatList
+          data={data}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => <Item item={item} />}
+        />
 
-        </S.BodyContainer>
+        <S.AddButton>
+          <S.AddIcon name="ios-add-circle" />
+        </S.AddButton>
+      </S.BodyContainer>
     </S.Container>
   );
 };
