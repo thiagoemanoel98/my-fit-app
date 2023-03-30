@@ -1,14 +1,30 @@
-import React, { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+import moment from "moment";
+import React, { useEffect, useState } from "react";
 import { TextInput, View } from "react-native";
+import { useData } from "../../hooks/data";
+import { generateUniqueId } from "../../utils";
 
 import * as S from "./styles";
 
 const NewItem: React.FC = () => {
+  const { addItem } = useData();
+  const { goBack } = useNavigation();
+
   const [name, setName] = useState();
   const [kcal, setKcal] = useState();
 
   const handleOnSave = () => {
+    if (name && kcal) {
+      addItem({
+        id: generateUniqueId(),
+        name,
+        kcal: Number(kcal),
+        date: moment(),
+      });
+    }
     console.log(name, kcal);
+    goBack();
   };
 
   return (
@@ -18,7 +34,7 @@ const NewItem: React.FC = () => {
           <S.Label>Nome</S.Label>
           <TextInput
             value={name}
-            onChangeText={(text) => setName(text)}
+            onChangeText={(text: string) => setName(text)}
             placeholder="Descrição"
           />
         </S.InputArea>
@@ -32,7 +48,7 @@ const NewItem: React.FC = () => {
           />
         </S.InputArea>
       </S.FormContainer>
-      <S.ButtonContainer>
+      <S.ButtonContainer onPress={handleOnSave}>
         <S.ButtonText>Salvar</S.ButtonText>
       </S.ButtonContainer>
     </S.Container>

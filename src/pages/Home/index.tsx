@@ -6,51 +6,19 @@ import { useNavigation } from "@react-navigation/native";
 
 import Item from "../../components/Item";
 import * as S from "./styles";
+import { useData } from "../../hooks/data";
 
 interface ScreenNavigationProp {
   navigate: (screen: string, params?: unknown) => void;
 }
 
-
 const Home: React.FC = () => {
-  const {navigate} = useNavigation<ScreenNavigationProp>();
+  const { navigate } = useNavigation<ScreenNavigationProp>();
+  const { handleChangeDate, currentList, currentKcal } = useData();
 
-  const data = [
-    {
-      id: "kskfkdaa",
-      name: "Pão",
-      kcal: 400,
-      date: moment(),
-    },
-    {
-      id: "kskfkdswaa",
-      name: "Arroz",
-      kcal: 300,
-      date: moment(),
-    },
-    {
-      id: "kskfkdwaaa",
-      name: "Macarrão",
-      kcal: 400,
-      date: moment(),
-    },
-    {
-      id: "kskfkd22waa",
-      name: "Feijão",
-      kcal: 330,
-      date: moment(),
-    },
-    {
-      id: "kskfkdwaa33",
-      name: "Carne",
-      kcal: 500,
-      date: moment(),
-    },
-  ];
-
-  const handleOneNewItem = ():void => {
+  const handleOneNewItem = (): void => {
     navigate("NewItem");
-  }
+  };
 
   return (
     <S.Container>
@@ -72,7 +40,7 @@ const Home: React.FC = () => {
           disabledDateNameStyle={{ color: "grey" }}
           disabledDateNumberStyle={{ color: "grey" }}
           iconContainer={{ flex: 0.1 }}
-          onDateSelected={() => {}}
+          onDateSelected={handleChangeDate}
           startingDate={moment().subtract(3, "days")}
           selectedDate={moment()}
           scrollerPaging={true}
@@ -81,18 +49,18 @@ const Home: React.FC = () => {
         />
         <S.HeaderTitle>Consumido no dia</S.HeaderTitle>
         <S.ContainerHighLight>
-          <S.TextCounterHighLight>2530</S.TextCounterHighLight>
+          <S.TextCounterHighLight>{currentKcal}</S.TextCounterHighLight>
           <S.HeaderTextHighLight>/kcal</S.HeaderTextHighLight>
         </S.ContainerHighLight>
       </S.Header>
       <S.BodyContainer>
         <FlatList
-          data={data}
+          data={currentList}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => <Item item={item} />}
         />
 
-        <S.AddButton onPress={handleOneNewItem} >
+        <S.AddButton onPress={handleOneNewItem}>
           <S.AddIcon name="ios-add-circle" />
         </S.AddButton>
       </S.BodyContainer>

@@ -11,6 +11,7 @@ export interface DataProviderData {
   currentData: MomentInput;
   currentKcal: number;
   currentList: ItemList[];
-  handleChangeDate: (item: ItemList) => void;
+  handleChangeDate: (date: MomentInput) => void;
+  updateCurrentDay: (date: MomentInput) => void;
   addItem : (item: ItemList) => void
 }
