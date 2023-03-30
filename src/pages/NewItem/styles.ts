@@ -8,6 +8,7 @@ export const Container = styled.View`
 
 export const FormContainer = styled.View`
   margin-top: 60px;
+  align-items: center;
 `;
 
 export const ButtonContainer = styled.TouchableOpacity`
@@ -22,4 +23,17 @@ export const ButtonContainer = styled.TouchableOpacity`
 export const ButtonText = styled.Text`
   color: #fff;
   font-size: 18px;
+`;
+
+export const Label = styled.Text`
+  color: #474747;
+  font-size: 16px;
+  
+`;
+
+export const InputArea = styled.View`
+  width: 90%;
+  border-bottom-width: 1px;
+  border-bottom-color: #474747;
+  margin-bottom: 28px;
 `;
