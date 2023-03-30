@@ -8,6 +8,13 @@
     },
     "slug": "my-fit",
     "version": "1.0.0",
-    "assetBundlePatterns": ["**/*"]
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "cf998cb7-257f-4162-a030-20f18f21bae3"
+      }
+    }
   }
 }

@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { DataProviderData, ItemList } from "../types";
 import moment, { MomentInput } from "moment";
 import Item from "../components/Item";
-import { filterIsToday } from "../utils";
+import { filterIsToday, getLocalStorage, setLocalStorage } from "../utils";
 
 interface Props {
   children: React.ReactNode;
@@ -16,13 +16,20 @@ export const DataProvider: React.FC<Props> = ({ children }) => {
   const [currentList, setCurrentList] = useState<ItemList[]>([]);
   const [listAllItens, setListAllItens] = useState<ItemList[]>([]);
 
+  const getStorageData = async () => {
+    const response = await getLocalStorage();
+    setListAllItens(response);
+  };
+
   const addItem = async (item: ItemList) => {
     if (listAllItens) {
       const newList = [...listAllItens, item];
       setListAllItens(newList);
+      await setLocalStorage(newList);
       updateCurrentDay();
     } else {
       setListAllItens([item]);
+      await setLocalStorage([item]);
       updateCurrentDay();
     }
     setCurrentData(moment());
@@ -50,6 +57,10 @@ export const DataProvider: React.FC<Props> = ({ children }) => {
   useEffect(() => {
     updateCurrentDay();
   }, [currentData, listAllItens]);
+
+  useEffect(() => {
+    getStorageData();
+  }, []);
 
   return (
     <DataContext.Provider
