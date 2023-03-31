@@ -1,10 +1,11 @@
 import styled from "styled-components/native";
 import { Ionicons } from "@expo/vector-icons";
+import { RFValue } from "react-native-responsive-fontsize";
 
 export const Container = styled.View`
   flex: 1;
   background-color: #1e3ba1;
-  padding-top: 32px;
+  padding-top: ${RFValue(26)}px;
 
   position: relative;
 `;
@@ -21,7 +22,7 @@ export const HeaderTitle = styled.Text`
   line-height: 21px;
   color: #fff;
   text-align: center;
-  margin-top: 20px;
+  margin-top: ${RFValue(16)}px;
 `;
 
 export const ContainerHighLight = styled.View`
@@ -31,7 +32,7 @@ export const ContainerHighLight = styled.View`
 `;
 
 export const TextCounterHighLight = styled.Text`
-  font-size: 68px;
+  font-size: ${RFValue(62)}px;
   line-height: 80px;
   color: #fff;
 `;
@@ -75,10 +76,10 @@ export const NoDataArea = styled.View`
 `;
 
 export const NoDataImage = styled.Image`
-  width: 400px;
-  height:300px;
+  width: ${RFValue(350)}px;
+  height: ${RFValue(250)}px;
 `;
 export const NoDataText = styled.Text`
-  font-size: 14px;
+  font-size: ${RFValue(12)}px;
   color: #000;
 `;
