@@ -63,6 +63,7 @@ const Home: React.FC = () => {
             data={currentList}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => <Item item={item} />}
+            showsVerticalScrollIndicator={false}
             ListEmptyComponent={
               isToday(currentData) ? (
                 <S.NoDataArea>
@@ -77,7 +78,9 @@ const Home: React.FC = () => {
               ) : (
                 <S.NoDataArea>
                   <S.NoDataImage source={NoDataImage} resizeMode={"contain"} />
-                  <S.NoDataText>Sem registro para o dia selecionado</S.NoDataText>
+                  <S.NoDataText>
+                    Sem registro para o dia selecionado
+                  </S.NoDataText>
                 </S.NoDataArea>
               )
             }
