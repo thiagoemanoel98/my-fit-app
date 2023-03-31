@@ -18,7 +18,13 @@ interface ScreenNavigationProp {
 
 const Home: React.FC = () => {
   const { navigate } = useNavigation<ScreenNavigationProp>();
-  const { handleChangeDate, currentData, currentList, currentKcal } = useData();
+  const {
+    handleChangeDate,
+    currentData,
+    currentList,
+    currentKcal,
+    removeItem,
+  } = useData();
 
   const handleOneNewItem = (): void => {
     navigate("NewItem");
@@ -62,7 +68,9 @@ const Home: React.FC = () => {
           <FlatList<ItemList>
             data={currentList}
             keyExtractor={(item) => item.id}
-            renderItem={({ item }) => <Item item={item} />}
+            renderItem={({ item }) => (
+              <Item item={item} removeItem={removeItem} />
+            )}
             showsVerticalScrollIndicator={false}
             ListEmptyComponent={
               isToday(currentData) ? (

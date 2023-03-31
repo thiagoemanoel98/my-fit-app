@@ -13,5 +13,6 @@ export interface DataProviderData {
   currentList: ItemList[];
   handleChangeDate: (date: MomentInput) => void;
   updateCurrentDay: (date: MomentInput) => void;
-  addItem : (item: ItemList) => void
+  addItem: (item: ItemList) => void;
+  removeItem: (itemParsed: ItemList) => void;
 }

@@ -35,6 +35,17 @@ export const DataProvider: React.FC<Props> = ({ children }) => {
     setCurrentData(moment());
   };
 
+  const removeItem = async (itemParsed: ItemList) => {
+    let newList = listAllItens.filter(function (item) {
+      return item.id !== itemParsed.id;
+    });
+
+    setListAllItens(newList);
+    await setLocalStorage(newList);
+    updateCurrentDay();
+    setCurrentData(moment());
+  };
+
   const updateCurrentDay = () => {
     if (listAllItens) {
       const filteredList = listAllItens.filter((item) =>
@@ -71,6 +82,7 @@ export const DataProvider: React.FC<Props> = ({ children }) => {
         addItem,
         handleChangeDate,
         updateCurrentDay,
+        removeItem,
       }}
     >
       {children}

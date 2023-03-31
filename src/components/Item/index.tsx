@@ -8,10 +8,10 @@ import { Platform, StatusBar } from "react-native";
 
 interface ItemListProps {
   item: ItemList;
+  removeItem: (itemParsed: ItemList)=>void;
 }
 
-const Item: React.FC = ({ item }: ItemListProps) => {
-  const [showPopover, setShowPopover] = useState(false);
+const Item: React.FC = ({ item, removeItem }: ItemListProps) => {
 
   return (
     <S.Container>
@@ -37,7 +37,7 @@ const Item: React.FC = ({ item }: ItemListProps) => {
         }
         from={<S.TreeDotsIcon name="dots-three-vertical" />}
       >
-        <S.PopupButton>
+        <S.PopupButton onPress= {() => removeItem(item)}>
           <S.PopupText>Excluir</S.PopupText>
           <S.TrashIcon name="trash" />
         </S.PopupButton>
