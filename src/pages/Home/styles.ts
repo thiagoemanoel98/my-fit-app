@@ -44,11 +44,16 @@ export const HeaderTextHighLight = styled.Text`
 
 export const BodyContainer = styled.View`
   flex: 2;
+  width: 100%;
   background-color: #fff;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 
   padding: 10px 20px;
+`;
+
+export const ListArea = styled.View`
+  width: 100%;
 `;
 
 export const AddButton = styled.TouchableOpacity`
@@ -60,4 +65,20 @@ export const AddButton = styled.TouchableOpacity`
 export const AddIcon = styled(Ionicons)`
   font-size: 54px;
   color: #1e3ba1;
+`;
+
+export const NoDataArea = styled.View`
+  width: 100%;
+
+  align-items: center;
+  justify-content: center;
+`;
+
+export const NoDataImage = styled.Image`
+  width: 400px;
+  height:300px;
+`;
+export const NoDataText = styled.Text`
+  font-size: 14px;
+  color: #000;
 `;

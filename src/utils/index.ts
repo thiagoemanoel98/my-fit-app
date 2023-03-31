@@ -27,3 +27,10 @@ export const getLocalStorage = async () => {
   const jsonValue = await AsyncStorage.getItem("@listITems");
   return jsonValue != null ? JSON.parse(jsonValue) : null;
 };
+
+export const isToday = (dateParsed: MomentInput): boolean => {
+  let currentDate = moment();
+  return (
+    currentDate.format("YYYY-MM-DD") === moment(dateParsed).format("YYYY-MM-DD")
+  );
+};

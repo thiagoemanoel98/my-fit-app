@@ -32,7 +32,7 @@ export const Label = styled.Text`
 `;
 
 export const InputArea = styled.View`
-  width: 90%;
+  width: 100%;
   border-bottom-width: 1px;
   border-bottom-color: #474747;
   margin-bottom: 28px;

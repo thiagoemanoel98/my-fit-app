@@ -3,10 +3,14 @@ import { FlatList } from "react-native";
 import moment from "moment";
 import CalendarStripProps from "react-native-calendar-strip";
 import { useNavigation } from "@react-navigation/native";
+import NoDataImage from "../../assets/undraw_No_data.png";
+import NoDataImageToday from "../../assets/undraw_add.png";
 
 import Item from "../../components/Item";
 import * as S from "./styles";
 import { useData } from "../../hooks/data";
+import { isToday } from "../../utils";
+import { ItemList } from "../../types";
 
 interface ScreenNavigationProp {
   navigate: (screen: string, params?: unknown) => void;
@@ -14,7 +18,7 @@ interface ScreenNavigationProp {
 
 const Home: React.FC = () => {
   const { navigate } = useNavigation<ScreenNavigationProp>();
-  const { handleChangeDate, currentList, currentKcal } = useData();
+  const { handleChangeDate, currentData, currentList, currentKcal } = useData();
 
   const handleOneNewItem = (): void => {
     navigate("NewItem");
@@ -54,11 +58,31 @@ const Home: React.FC = () => {
         </S.ContainerHighLight>
       </S.Header>
       <S.BodyContainer>
-        <FlatList
-          data={currentList}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => <Item item={item} />}
-        />
+        <S.ListArea>
+          <FlatList<ItemList>
+            data={currentList}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => <Item item={item} />}
+            ListEmptyComponent={
+              !isToday(currentData) ? (
+                <S.NoDataArea>
+                  <S.NoDataImage
+                    source={NoDataImageToday}
+                    resizeMode={"contain"}
+                  />
+                  <S.NoDataText>
+                    Adicione alimentos para o dia de hoje!
+                  </S.NoDataText>
+                </S.NoDataArea>
+              ) : (
+                <S.NoDataArea>
+                  <S.NoDataImage source={NoDataImage} resizeMode={"contain"} />
+                  <S.NoDataText>Sem registro para esse dia</S.NoDataText>
+                </S.NoDataArea>
+              )
+            }
+          />
+        </S.ListArea>
 
         <S.AddButton onPress={handleOneNewItem}>
           <S.AddIcon name="ios-add-circle" />
