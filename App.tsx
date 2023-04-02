@@ -3,15 +3,19 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { DataProvider } from "./src/hooks/data";
 import Routes from "./src/routes";
+import { ThemeProvider } from "styled-components";
+import theme from "./src/global/styles/theme";
 
 export default function App() {
   return (
-    <DataProvider>
-      <View style={styles.container}>
-        <StatusBar style="inverted" />
-        <Routes />
-      </View>
-    </DataProvider>
+    <ThemeProvider theme={theme}>
+      <DataProvider>
+        <View style={styles.container}>
+          <StatusBar style="inverted" />
+          <Routes />
+        </View>
+      </DataProvider>
+    </ThemeProvider>
   );
 }
 

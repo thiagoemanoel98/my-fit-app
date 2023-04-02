@@ -4,7 +4,7 @@ import { RFValue } from "react-native-responsive-fontsize";
 
 export const Container = styled.View`
   flex: 1;
-  background-color: #1e3ba1;
+  background-color: ${({ theme }) => theme.colors.primary};
   padding-top: ${RFValue(26)}px;
 
   position: relative;
@@ -13,14 +13,14 @@ export const Container = styled.View`
 export const Header = styled.View`
   flex: 1;
   max-height: 240px;
-  background-color: #1e3ba1;
+  background-color: ${({ theme }) => theme.colors.primary};
   align-content: center;
 `;
 
 export const HeaderTitle = styled.Text`
   font-size: 18px;
   line-height: 21px;
-  color: #fff;
+  color: ${({ theme }) => theme.colors.white};
   text-align: center;
   margin-top: ${RFValue(16)}px;
 `;
@@ -34,7 +34,7 @@ export const ContainerHighLight = styled.View`
 export const TextCounterHighLight = styled.Text`
   font-size: ${RFValue(62)}px;
   line-height: 80px;
-  color: #fff;
+  color: ${({ theme }) => theme.colors.white};
 `;
 
 export const HeaderTextHighLight = styled.Text`

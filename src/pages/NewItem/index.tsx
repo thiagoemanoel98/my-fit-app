@@ -23,7 +23,6 @@ const NewItem: React.FC = () => {
         date: moment(),
       });
     }
-    console.log(name, kcal);
     goBack();
   };
 
