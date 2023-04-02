@@ -9,7 +9,6 @@ App para acompanhamento fitness desenvolvido para fins de estudo. Os dados são 
     <img width = "200" height= "400" src = "src/assets/toReadme/print1.png">
     <img width = "200" height= "400" src = "src/assets/toReadme/print2.png">
     <img width = "200" height= "400" src = "src/assets/toReadme/print3.png">
-    <img width = "200" height= "400" src = "src/assets/toReadme/print4.png">
 </p>
 
 <p align="center">
