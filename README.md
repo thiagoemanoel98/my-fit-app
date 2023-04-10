@@ -1,7 +1,7 @@
 # my-fit-app
 
 
-App para acompanhamento fitness desenvolvido para fins de estudo. Os dados são persitidos na memória interna do celular para que, com isso, os alimentos cadastrados não se percam após o app ser fechado.
+App para acompanhamento fitness desenvolvido para fins de estudo. Os dados são persistidos na memória interna do celular para que, com isso, os alimentos cadastrados não se percam após o app ser fechado.
 
 ## Screenshots
 
