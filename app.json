@@ -15,6 +15,9 @@
       "eas": {
         "projectId": "cf998cb7-257f-4162-a030-20f18f21bae3"
       }
+    },
+    "android": {
+      "package": "com.thiago.emanoel98.myfit"
     }
   }
 }

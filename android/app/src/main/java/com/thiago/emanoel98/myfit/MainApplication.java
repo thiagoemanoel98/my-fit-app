@@ -1,4 +1,4 @@
-package com.myfit;
+package com.thiago.emanoel98.myfit;
 
 import android.app.Application;
 import android.content.res.Configuration;

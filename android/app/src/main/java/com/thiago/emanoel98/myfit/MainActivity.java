@@ -1,4 +1,4 @@
-package com.myfit;
+package com.thiago.emanoel98.myfit;
 
 import android.os.Build;
 import android.os.Bundle;
